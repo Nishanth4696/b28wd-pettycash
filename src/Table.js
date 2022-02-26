@@ -28,20 +28,22 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(date, description, voucherno,cost , tax, debit, credit, balance) {
-  return { date, description, voucherno, cost , tax, debit, credit, balance };
+function createData({trans}) {
+  return
+   {trans.map(() =>>) date, description, voucherno, cost , tax, debit, credit, balance };
 }
 
 const rows = [
-  createData("12-05-2021","hello nishanth","12431","18000","233","123","3231","2131231","12323" ),
-  createData("12-05-2021","hello nishanth","12431","18000","233","123","3231","2131231","12323" ),
-//   createData("","","","","","","","","" ),
-//   createData("","","","","","","","","" ),
-//   createData("","","","","","","","","" ),
-createData("12-05-2021","hello nishanth","12431","18000","233","123","3231","2131231","12323" )
+  createData(),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
+
 export function CustomizedTables() {
+
   return (
     <TableContainer component={Paper}>
       <Table style={{margin:"20px"}} sx={{ minWidth: '700px' }} aria-label="customized table">
@@ -58,18 +60,19 @@ export function CustomizedTables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.date}>
+         {rows.map((row) =>(
+            <StyledTableRow key={row.Trans_Date}>
               <StyledTableCell component="th" scope="row">
-                {row.date}
+                {row.Trans_Date}
               </StyledTableCell>
-              <StyledTableCell >{row.description}</StyledTableCell>
-              <StyledTableCell >{row.voucherno}</StyledTableCell>
-              <StyledTableCell >{row.cost}</StyledTableCell>
-              <StyledTableCell >{row.tax}</StyledTableCell>
-              <StyledTableCell >{row.debit}</StyledTableCell>
-              <StyledTableCell >{row.credit}</StyledTableCell>
-              <StyledTableCell >{row.balance}</StyledTableCell>
+              <StyledTableCell >{row.Voucher_No}</StyledTableCell>
+              <StyledTableCell >{row.Description}</StyledTableCell>
+              <StyledTableCell >{row.Cost}</StyledTableCell>
+              <StyledTableCell >{row.Vat}</StyledTableCell>
+              <StyledTableCell >{row.Total_Debit}</StyledTableCell>
+              <StyledTableCell >{row.Opening_Balance}</StyledTableCell>
+              <StyledTableCell >{row.Cheque_Received}</StyledTableCell>
+              <StyledTableCell >{row.Total_Credit}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

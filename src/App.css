@@ -5,6 +5,17 @@
   
   
 }
+
+
+
+.col-form-label {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form-control {
+  border: 1px solid black !important;
+}
 .button_group{
   display: flex;
   
