@@ -38,7 +38,7 @@ export function CustomizedTables({rows}) {
 
   return (
     <TableContainer component={Paper}>
-      <Table style={{margin:"20px", width:'800px'}}  aria-label="customized table">
+      <Table style={{margin:"20px", width:'1200px'}}  aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Date</StyledTableCell>
@@ -48,23 +48,22 @@ export function CustomizedTables({rows}) {
             <StyledTableCell >Vat/Tax</StyledTableCell>
             <StyledTableCell >Debit</StyledTableCell>
             <StyledTableCell >Credit</StyledTableCell>
-            <StyledTableCell >Balance</StyledTableCell>
+            <StyledTableCell align='middle'>Balance</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody >
          {rows.map((row) =>(
             <StyledTableRow key={row.Trans_Date}>
-              <StyledTableCell component="th" scope="row" >
+              <StyledTableCell component="th" scope="row" align='middle'>
                 {row.Trans_Date}
               </StyledTableCell>
-              <StyledTableCell >{row.Voucher_No}</StyledTableCell>
-              <StyledTableCell >{row.Description}</StyledTableCell>
-              <StyledTableCell >{row.Cost}</StyledTableCell>
-              <StyledTableCell >{row.Vat}</StyledTableCell>
-              <StyledTableCell >{row.Total_Debit}</StyledTableCell>
-              <StyledTableCell >{row.Opening_Balance}</StyledTableCell>
-              <StyledTableCell >{row.Cheque_Received}</StyledTableCell>
-              <StyledTableCell >{row.Total_Credit}</StyledTableCell>
+              <StyledTableCell align='middle'>{row.Description}</StyledTableCell>
+              <StyledTableCell align='middle'>{row.Voucher_No}</StyledTableCell>
+              <StyledTableCell align='middle'>{row.Cost}</StyledTableCell>
+              <StyledTableCell align='middle'>{row.Vat}</StyledTableCell>
+              <StyledTableCell align='middle'>{row.Total_Debit}</StyledTableCell>
+              <StyledTableCell align='middle'>{row.Total_Credit}</StyledTableCell>
+              <StyledTableCell align='middle'>{row.Opening_Balance}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
