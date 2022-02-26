@@ -2,12 +2,8 @@ import './App.css';
 import { useState} from 'react';
 import React from "react";
 import { Welcome } from './Welcome';
-import { AddTeam } from './AddTeam';
 import {NotFound} from './NotFound'
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-import { TeamDetails } from './TeamDetails';
-import { EditTeam} from './EditTeam';
-import TeamList from './TeamList';
+import { Switch, Route, useHistory } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
@@ -17,6 +13,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { LoginApp } from './LoginApp';
 import { PettyCash }  from './PettyCash';
+import { Report } from './Report';
 
 
 export default function App() {
@@ -40,9 +37,8 @@ export default function App() {
           <AppBar position="sticky">
             <Toolbar variant="dense">
               <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./home")}>Home</Button>
-              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./iplteams")}>IPL Teams</Button>
-              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./addteam")}>Add Team</Button>
               <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./pettycash")}>Petty-Cash</Button>
+              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./report")}>Reports</Button>
 
               <Button 
                 startIcon ={mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon /> }
@@ -56,30 +52,20 @@ export default function App() {
         </AppBar>
         
           <Switch>
-            <Route exact path="/ipl">
-              <Redirect to='/iplteams' />
-            </Route>
+          
 
             <Route exact path="/pettycash">
               <PettyCash />
             </Route>
+
+            <Route exact path="/report">
+              <Report />
+            </Route>
            
 
-            <Route exact path="/iplteams/edit/:id">
-              <EditTeam  />
-            </Route>
+            
 
-            <Route exact path="/iplteams/:id">
-              <TeamDetails />
-            </Route>
-
-            <Route exact path="/iplteams">
-              <TeamList  /> 
-            </Route>
-
-            <Route exact path="/addteam">
-                <AddTeam />
-            </Route>
+            
 
             <Route exact path="/home">
                 <Welcome />
@@ -100,9 +86,6 @@ export default function App() {
      </ThemeProvider> 
   );
 }
-
-
-
 
 
 

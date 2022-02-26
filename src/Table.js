@@ -53,7 +53,7 @@ export function CustomizedTables({rows}) {
         </TableHead>
         <TableBody >
          {rows.map((row) =>(
-            <StyledTableRow key={row.Trans_Date}>
+            <StyledTableRow key={row.Voucher_No}>
               <StyledTableCell component="th" scope="row" align='middle'>
                 {row.Trans_Date}
               </StyledTableCell>
@@ -64,6 +64,7 @@ export function CustomizedTables({rows}) {
               <StyledTableCell align='middle'>{row.Total_Debit}</StyledTableCell>
               <StyledTableCell align='middle'>{row.Total_Credit}</StyledTableCell>
               <StyledTableCell align='middle'>{row.Opening_Balance}</StyledTableCell>
+              
             </StyledTableRow>
           ))}
         </TableBody>
