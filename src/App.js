@@ -11,9 +11,10 @@ import Toolbar from '@mui/material/Toolbar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { LoginApp } from './LoginApp';
-import { PettyCash }  from './PettyCash';
+// import {LoginApp} from './b28wd-motors/LoginApp'
+import { AddPettyCash }  from './Add PettyCash';
 import { Report } from './Report';
+import { Data } from './Data';
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
       mode: mode,
     },
   });
+  const [trans, setTrans] = useState('')
 
  
   return (
@@ -37,7 +39,7 @@ export default function App() {
           <AppBar position="sticky">
             <Toolbar variant="dense">
               <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./home")}>Home</Button>
-              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./pettycash")}>Petty-Cash</Button>
+              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./pettycash")}>Add Petty-Cash</Button>
               <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./report")}>Reports</Button>
 
               <Button 
@@ -55,13 +57,16 @@ export default function App() {
           
 
             <Route exact path="/pettycash">
-              <PettyCash />
+              <AddPettyCash trans={trans} setTrans={setTrans}/>
             </Route>
 
             <Route exact path="/report">
-              <Report />
+              <Report trans={trans} setTrans={setTrans} />
             </Route>
            
+            <Route exact path="/data">
+              <Data />
+            </Route>
 
             
 
@@ -71,13 +76,13 @@ export default function App() {
                 <Welcome />
             </Route>
 
-            <Route exact path="/">
+            {/* <Route exact path="/">
                 <LoginApp />
-            </Route>
+            </Route> */}
 
             
 
-            <Route path="**">
+            <Route path="/**">
               <NotFound />
             </Route>
           </Switch>      
@@ -86,6 +91,5 @@ export default function App() {
      </ThemeProvider> 
   );
 }
-
 
 

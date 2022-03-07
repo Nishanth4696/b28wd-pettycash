@@ -1,53 +1,56 @@
 import Button from '@mui/material/Button';
 import './App.css';
 import TextField from '@mui/material/TextField';
-import {CustomizedTables} from './Table'
+// import {CustomizedTables} from './Table'
 import { useHistory } from 'react-router-dom';
 // import { useFormik } from 'formik';
 import { useState } from 'react';
 // import * as yup from 'yup';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 
 // const formValidaionSchema= yup.object({})
 
-export function PettyCash(){
-  const [Trans_Date,setTrans_Date] = useState("");
-  const [Voucher_No, setVoucher_No] = useState("");
-  const [Description, setDescription] = useState(""); 
-  const [Cost,setCost] = useState(""); 
-  const [Vat,setVat ] = useState("");
-  const [Total_Debit, setTotal_Debit] = useState("");
-  const [Opening_Balance, setOpening_Balance] = useState("");
-  const [Cheque_Received, setCheque_Received] = useState("");
-  const [Total_Credit,setTotal_Credit] = useState("");
+export function AddPettyCash({trans, setTrans}){
+  const [Trans_Date,setTrans_Date] = useState("-");
+  const [Voucher_No, setVoucher_No] = useState("-");
+  const [Description, setDescription] = useState("-"); 
+  const [Cost,setCost] = useState("-"); 
+  const [Vat,setVat ] = useState("-");
+  const [Total_Debit, setTotal_Debit] = useState("-");
+  const [Opening_Balance, setOpening_Balance] = useState("-");
+  const [Cheque_Received, setCheque_Received] = useState("-");
+  const [Total_Credit,setTotal_Credit] = useState("-");
 
-  const [trans, setTrans] = useState('')
+  
 
  
 
-const rows = [...trans];
+
 
   const addTrans = () => {
 
     console.log("adding");
     const newTrans = {
       Trans_Date,
-      Voucher_No,
+      Voucher_No : parseInt(Voucher_No),
       Description,
-      Cost,
-      Vat,
-      Total_Debit,
-      Opening_Balance,
-      Cheque_Received,
-      Total_Credit,
+      Cost: Cost,
+      Vat: Vat,
+      Total_Debit: Total_Debit,
+      Opening_Balance: Opening_Balance,
+      Cheque_Received: Cheque_Received,
+      Total_Credit: Total_Credit,
     
     };
     console.log(newTrans);
     setTrans([ ...trans, newTrans]) 
-
+    history.push('./report')
    
   }
 
+  console.log(Total_Debit)
  
 
     // const formik = useFormik({
@@ -71,7 +74,14 @@ const rows = [...trans];
     //   });
     const [box, setBox] = useState("");
     const history = useHistory();
-  const styles = {display: box};
+  const styles = {display: box, fontWeight:'bold'};
+
+  const [isDisabled, setIsDisabled] = useState(true)
+  const handleClick = () => {
+    setIsDisabled(!isDisabled)
+  };
+
+  
   
     return(
         <section>
@@ -87,8 +97,8 @@ const rows = [...trans];
                     variant="contained" 
                     color="success" 
                     
-                    onClick={() =>setBox((box ==="show") ? "none" : "show")} >
-                      Entry</Button>
+                    onClick={() =>setBox((box ==='none') ? 'block' : 'none')} >
+                      {box === 'none'? 'show' : 'hide'} Entry</Button>
             </div>
             <div>
             <Button  style={{margin:"10px"}}  type="submit" variant="contained" onClick={addTrans}>Save Transaction</Button>
@@ -96,8 +106,9 @@ const rows = [...trans];
             <Button  style={{margin:"10px"}}variant="contained" onClick={()=> history.push("./report")}>Report</Button>
             </div>
         </div>
-
-        <div className='textbox ' style={styles}>
+   <div className='hide' style={styles}>
+        <div className='textbox' >
+        
                 <TextField
                 
                 name="Trans_Date"
@@ -127,13 +138,23 @@ const rows = [...trans];
                 id="outlined-Cost"
                 label="Cost"
                 />
+                <form className='clicktax'>
                 <TextField
                 
                  name="Vat"
-                 onChange={(event) => setVat(event.target.value)}
+                 onKeyPress={(event) => setVat(event.target.value)}
                 id="outlined-Vat"
-                label="Vat @5%"
+                label="Vat"
+                disabled={isDisabled}
+                
                 />
+                
+                <Button  
+               
+                type="button" onClick={handleClick}
+                startIcon ={(isDisabled === false) ?< CheckBoxIcon/> : <CheckBoxOutlineBlankIcon/>   } >click for tax</Button>
+                </form>
+
                 <TextField
                 
                  name="Total_Debit"
@@ -164,9 +185,8 @@ const rows = [...trans];
                 />
 
         </div>
-        <div>
-       <CustomizedTables rows={rows}/>
         </div>
+        
         
         </section>
        
@@ -177,3 +197,4 @@ export function createData(trans) {
   return(trans);
   
 }
+

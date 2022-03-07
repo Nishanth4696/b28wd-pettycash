@@ -8,6 +8,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -38,32 +41,42 @@ export function CustomizedTables({rows}) {
 
   return (
     <TableContainer component={Paper}>
-      <Table style={{margin:"20px", width:'1200px'}}  aria-label="customized table">
+      <Table style={{marginTop:'20px', width:'100vw'}}  aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Date</StyledTableCell>
-            <StyledTableCell >Description</StyledTableCell>
-            <StyledTableCell >Voucher No.</StyledTableCell>
-            <StyledTableCell >Cost</StyledTableCell>
-            <StyledTableCell >Vat/Tax</StyledTableCell>
-            <StyledTableCell >Debit</StyledTableCell>
-            <StyledTableCell >Credit</StyledTableCell>
-            <StyledTableCell align='middle'>Balance</StyledTableCell>
+            <StyledTableCell align='center'>Date</StyledTableCell>
+            <StyledTableCell align='center' >Description</StyledTableCell>
+            <StyledTableCell align='center' >Voucher No.</StyledTableCell>
+            <StyledTableCell align='center' >Cost</StyledTableCell>
+            <StyledTableCell align='center' >Vat/Tax</StyledTableCell>
+            <StyledTableCell align='center' >Debit</StyledTableCell>
+            <StyledTableCell align='center' >Credit</StyledTableCell>
+            <StyledTableCell align='center' >Balance</StyledTableCell>
+            <StyledTableCell align='center' ></StyledTableCell>
+            <StyledTableCell align='center' ></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody >
          {rows.map((row) =>(
             <StyledTableRow key={row.Voucher_No}>
-              <StyledTableCell component="th" scope="row" align='middle'>
+              <StyledTableCell component="th" scope="row" align='center'>
                 {row.Trans_Date}
               </StyledTableCell>
-              <StyledTableCell align='middle'>{row.Description}</StyledTableCell>
-              <StyledTableCell align='middle'>{row.Voucher_No}</StyledTableCell>
-              <StyledTableCell align='middle'>{row.Cost}</StyledTableCell>
-              <StyledTableCell align='middle'>{row.Vat}</StyledTableCell>
-              <StyledTableCell align='middle'>{row.Total_Debit}</StyledTableCell>
-              <StyledTableCell align='middle'>{row.Total_Credit}</StyledTableCell>
-              <StyledTableCell align='middle'>{row.Opening_Balance}</StyledTableCell>
+              <StyledTableCell align='center'>{row.Description}</StyledTableCell>
+              <StyledTableCell align='center'>{row.Voucher_No}</StyledTableCell>
+              <StyledTableCell align='center'>{row.Cost}</StyledTableCell>
+              <StyledTableCell align='center'>{row.Vat}</StyledTableCell>
+              <StyledTableCell align='center'>{row.Total_Debit}</StyledTableCell>
+              <StyledTableCell align='center'>{row.Total_Credit}</StyledTableCell>
+              <StyledTableCell align='center'>{row.Opening_Balance}</StyledTableCell>
+              <StyledTableCell align='center'>
+                <IconButton color="primary" aria-label="upload picture" component="span">
+                  <EditIcon />
+                </IconButton></StyledTableCell>
+              <StyledTableCell align='center'>
+                <IconButton color="error" aria-label="upload picture" component="span">
+                  <DeleteIcon />
+                </IconButton></StyledTableCell>
               
             </StyledTableRow>
           ))}

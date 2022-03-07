@@ -5,9 +5,10 @@
   
   
 }
+
 .reports{
   display: inline;
-}
+  }
 
 
 
@@ -27,8 +28,12 @@
 }
 .textbox{
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+.clicktax{
+  display: flex;
 }
 .head{
   text-align: center;
@@ -234,8 +239,8 @@ font-size: 15px;
   margin: 0;
 }
 .NotFound{
-  height: 560px;
-  width: 1200px;
+  height: 92.15vh;
+  width: 100vw;
 }
 nav{
  font-size: 28px;
