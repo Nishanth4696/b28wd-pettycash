@@ -13,9 +13,11 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 // import {LoginApp} from './b28wd-motors/LoginApp'
 import { AddPettyCash }  from './Add PettyCash';
-import { Report } from './Report';
-import { Data } from './Data';
+import { PettyCash } from './PettyCash';
+import { PrintReports} from './printReports' 
 import {EditPettycash} from './EditPettycash'
+import { Reports } from './Reports';
+
 
 
 export default function App() {
@@ -40,8 +42,9 @@ export default function App() {
           <AppBar position="sticky">
             <Toolbar variant="dense">
               <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./home")}>Home</Button>
-              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./pettycash")}>Add Petty-Cash</Button>
-              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./report")}>Reports</Button>
+              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./pettycash")}>PettyCash</Button>
+              <Button variant="text" style={{color:"inherit"}} onClick={()=> history.push("./addpettycash")}>Add Petty-Cash</Button>
+              
 
               <Button 
                 startIcon ={mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon /> }
@@ -57,20 +60,25 @@ export default function App() {
           <Switch>
           
 
-            <Route exact path="/pettycash">
+            <Route exact path="/addpettycash">
               <AddPettyCash />
             </Route>
 
-            <Route exact path="/report">
-              <Report  />
+            <Route exact path="/pettycash">
+              <PettyCash  />
             </Route>
            
-            <Route exact path="/data">
-              <Data />
+            <Route exact path="/report">
+              <Reports/>
             </Route>
 
             <Route exact path="/pettycash/edit/:id">
               <EditPettycash />
+            </Route>
+
+
+            <Route exact path="/printreport">
+              <PrintReports/>
             </Route>
 
             

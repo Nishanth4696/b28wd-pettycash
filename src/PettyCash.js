@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { CustomizedTables } from "./Table";
 
 
-export function Report() {
+export function PettyCash() {
   const [trans, setTrans] = useState([])
 
   const getTrans = () =>{
@@ -24,7 +24,7 @@ export function Report() {
   }
 
   const rows = [...trans];
-  const data = "";
+  
   const history = useHistory();
   return (
     <section>
@@ -35,15 +35,13 @@ export function Report() {
           
           style={{margin:"10px", width:"150px"}} 
           variant="contained" 
-          onClick={() =>history.push('./data')}>Show Data</Button>
+          onClick={() =>history.push('./report')}>Show Data</Button>
       </div>
       <div className='reports'>
-      <Button  style={{margin:"10px", width:"150px"}} variant="contained" onClick={() =>data}>Refresh</Button>
-      <Button  style={{margin:"10px", width:"150px"}} variant="contained" onClick={() =>history.push('./data')}>Get Reports</Button>
+      <Button  style={{margin:"10px", width:"150px"}} variant="contained" onClick={() =>window.location.reload(false)}>Refresh</Button>
+      <Button  style={{margin:"10px", width:"150px"}} variant="contained" onClick={() =>history.push('./printreport')}>print Reports</Button>
       </div>
-      <div className='reports'>
-      <Button  style={{margin:"10px", width:"320px"}} variant="contained" onClick={() => window.print()}>Print PettyCash</Button>
-      </div>
+      
     </div>
     <div>
        <CustomizedTables rows={rows} deleteTrans={deleteTrans}/>

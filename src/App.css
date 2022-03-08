@@ -26,6 +26,21 @@
     justify-content: space-around;
     align-items: center;
 }
+.printButton{
+  margin-left: 92%;
+}
+
+.datatable{
+  border: 2px solid black;
+  display: table;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+  height: 50vh;
+ justify-content: center;
+  
+  border-collapse: collapse;
+}
 .textbox{
   display: grid;
 

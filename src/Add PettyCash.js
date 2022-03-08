@@ -90,6 +90,7 @@ export function AddPettyCash(){
     setIsDisabled(!isDisabled)
   };
 
+
   
   
     return(
@@ -170,7 +171,7 @@ export function AddPettyCash(){
               <div className='clicktax'>
                 <TextField                
                   name="Vat"
-                  value={formik.values.Vat}
+                  value={formik.values.Cost *5/100}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   id="outlined-Vat"
