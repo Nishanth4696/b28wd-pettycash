@@ -11,6 +11,8 @@ import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useHistory } from 'react-router-dom';
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -37,8 +39,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 
-export function CustomizedTables({rows}) {
-
+export function CustomizedTables({rows, deleteTrans, }) {
+const history = useHistory();
   return (
     <TableContainer component={Paper}>
       <Table style={{marginTop:'20px', width:'100vw'}}  aria-label="customized table">
@@ -70,11 +72,11 @@ export function CustomizedTables({rows}) {
               <StyledTableCell align='center'>{row.Total_Credit}</StyledTableCell>
               <StyledTableCell align='center'>{row.Opening_Balance}</StyledTableCell>
               <StyledTableCell align='center'>
-                <IconButton color="primary" aria-label="upload picture" component="span">
+                <IconButton color="primary" aria-label="upload picture" component="span" onClick={()=>history.push("/pettycash/edit/" + row.id)}>
                   <EditIcon />
                 </IconButton></StyledTableCell>
               <StyledTableCell align='center'>
-                <IconButton color="error" aria-label="upload picture" component="span">
+                <IconButton color="error" aria-label="upload picture" component="span" onClick={() =>deleteTrans(row.id)}>
                   <DeleteIcon />
                 </IconButton></StyledTableCell>
               

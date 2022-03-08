@@ -1,10 +1,9 @@
 import Button from '@mui/material/Button';
 import './App.css';
 import TextField from '@mui/material/TextField';
-
-import { useHistory } from 'react-router-dom';
+import { useHistory ,useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import * as yup from 'yup';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -22,63 +21,63 @@ const formValidaionSchema= yup.object({
   Total_Credit:yup.number().required()
 })
 
-export function AddPettyCash(){
-  // const [Trans_Date] = useState("-");
-  // const [Voucher_No] = useState("-");
-  // const [Description] = useState("-"); 
-  // const [Cost] = useState("-"); 
-  // const [Vat] = useState("-");
-  // const [Total_Debit] = useState("-");
-  // const [Opening_Balance] = useState("-");
-  // const [Cheque_Received] = useState("-");
-  // const [Total_Credit] = useState("-");
+export function EditPettycash(){
+  const { id } = useParams();
+    
+  const [trans, setTrans] = useState(null);
 
+  useEffect(() => {
+    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction/${id}`,{method:"GET"})
+    .then((data) => data.json())
+    .then((mv) => setTrans(mv))
+    
+  },[id])
+ 
+return trans ? <UpdateTrans trans={trans}  /> : ""; 
+}
   
+function UpdateTrans({trans}){  
   const formik = useFormik({
     initialValues: {
-      Trans_Date:'', 
-      Voucher_No:'',
-      Description:'',
-      Cost:'',
-      Vat:'',
-      Total_Debit:'',
-      Opening_Balance:'',
-      Cheque_Received:'',
-      Total_Credit:'', 
+      Trans_Date:trans.Trans_Date, 
+      Voucher_No:trans.Voucher_No,
+      Description:trans.Description,
+      Cost:trans.Cost,
+      Vat:trans.Vat,
+      Total_Debit:trans.Total_Debit,
+      Opening_Balance:trans.Opening_Balance,
+      Cheque_Received:trans.Cheque_Received,
+      Total_Credit:trans.Total_Credit, 
   
     },
     // validate: validateForm,
     validationSchema: formValidaionSchema,
-    onSubmit: (newTrans) => {
-      console.log("onSumbit", newTrans)
-      addTrans(newTrans)
+    onSubmit: (updateTrans) => {
+      console.log("onSumbit", updateTrans)
+      editTrans(updateTrans)
     }
   });
  
 
 
 
-  const addTrans = (newTrans) => {
+  const editTrans = (updateTrans) => {
 
     console.log("adding");
    
-    console.log(newTrans);
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction`,
+    console.log(updateTrans);
+    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction/${trans.id}`,
       {
-        method:"POST",
-        body:JSON.stringify(newTrans),
+        method:"PUT",
+        body:JSON.stringify(updateTrans),
         headers:{'Content-Type':'application/json'},
       })
-      .then(() => history.push('./report'))
+      .then(() => history.push('/report'))
     // setTrans([ ...trans, newTrans]) 
     
    
   }
 
-  
- 
-
-    
 
 
     const [box, setBox] = useState("");
@@ -117,7 +116,7 @@ export function AddPettyCash(){
         </div>
    <div className='hide' style={styles} >
         <form className='textbox' onSubmit={formik.handleSubmit}>
-        <Button  style={{margin:"10px"}}  type="submit" variant="contained">Save Transaction</Button>
+        <Button  style={{margin:"10px"}}  type="submit" variant="contained">Update Transaction</Button>
         
               <TextField
                 name="Trans_Date"
@@ -245,6 +244,7 @@ export function AddPettyCash(){
        
     );
 }
+
 
 export function createData(trans) {
   return(trans);

@@ -15,6 +15,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { AddPettyCash }  from './Add PettyCash';
 import { Report } from './Report';
 import { Data } from './Data';
+import {EditPettycash} from './EditPettycash'
 
 
 export default function App() {
@@ -28,7 +29,7 @@ export default function App() {
       mode: mode,
     },
   });
-  const [trans, setTrans] = useState('')
+  
 
  
   return (
@@ -57,15 +58,19 @@ export default function App() {
           
 
             <Route exact path="/pettycash">
-              <AddPettyCash trans={trans} setTrans={setTrans}/>
+              <AddPettyCash />
             </Route>
 
             <Route exact path="/report">
-              <Report trans={trans} setTrans={setTrans} />
+              <Report  />
             </Route>
            
             <Route exact path="/data">
               <Data />
+            </Route>
+
+            <Route exact path="/pettycash/edit/:id">
+              <EditPettycash />
             </Route>
 
             
