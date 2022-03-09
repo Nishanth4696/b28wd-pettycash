@@ -6,13 +6,14 @@ import { useEffect } from "react";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { API_URL } from './global-constants.js';
 
 
 export function Reports() {
   const [trans, setTrans] = useState([])
 const history = useHistory();
   const getTrans = () =>{
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash`,{method:"GET"})
+    fetch(`${API_URL}/pettycash`,{method:"GET"})
     .then((data) => data.json())
     .then((trs) => setTrans(trs))
   }

@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import './App.css';
 import TextField from '@mui/material/TextField';
-
+import { API_URL } from './global-constants.js';
 import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useState } from 'react';
@@ -63,7 +63,7 @@ export function AddPettyCash(){
     console.log("adding");
    
     console.log(newTrans);
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash`,
+    fetch(`${API_URL}/pettycash`,
       {
         method:"POST",
         body:JSON.stringify(newTrans),

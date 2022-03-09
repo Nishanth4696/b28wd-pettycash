@@ -5,6 +5,7 @@ import ReactToPrint, { PrintContextConsumer } from "react-to-print";
 import Paper from '@mui/material/Paper';
 import { useState } from "react";
 import { useEffect } from "react";
+import { API_URL } from './global-constants.js';
 
 
 
@@ -15,7 +16,7 @@ export function PrintReports() {
   const [trans, setTrans] = useState([])
 
   const getTrans = () =>{
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash`,{method:"GET"})
+    fetch(`${API_URL}/pettycash`,{method:"GET"})
     .then((data) => data.json())
     .then((trs) => setTrans(trs))
   }

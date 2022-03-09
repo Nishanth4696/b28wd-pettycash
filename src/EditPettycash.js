@@ -7,6 +7,7 @@ import { useState,useEffect } from 'react';
 import * as yup from 'yup';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { API_URL } from './global-constants.js';
 
 
 const formValidaionSchema= yup.object({
@@ -27,7 +28,7 @@ export function EditPettycash(){
   const [trans, setTrans] = useState(null);
 
   useEffect(() => {
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash/${id}`,{method:"GET"})
+    fetch(`${API_URL}/pettycash/${id}`,{method:"GET"})
     .then((data) => data.json())
     .then((mv) => setTrans(mv))
     
@@ -66,7 +67,7 @@ function UpdateTrans({trans}){
     console.log("adding");
    
     console.log(updateTrans);
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash/${trans._id}`,
+    fetch(`${API_URL}/pettycash/${trans._id}`,
       {
         method:"PUT",
         body:JSON.stringify(updateTrans),

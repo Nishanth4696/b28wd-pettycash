@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
 import { useState } from "react";
 import { useEffect } from "react";
-
+import { API_URL } from './global-constants.js';
 import { CustomizedTables } from "./Table";
 
 
@@ -11,14 +11,14 @@ export function PettyCash() {
   const [trans, setTrans] = useState([])
 
   const getTrans = () =>{
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash`,{method:"GET"})
+    fetch(`${API_URL}/pettycash`,{method:"GET"})
     .then((data) => data.json())
     .then((trs) => setTrans(trs))
   }
   useEffect(getTrans,[])
 
   const deleteTrans = (_id) =>{
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash/${_id}`,{ method:"DELETE" })
+    fetch(`${API_URL}/pettycash/${_id}`,{ method:"DELETE" })
     .then(() => getTrans());
     
   }
