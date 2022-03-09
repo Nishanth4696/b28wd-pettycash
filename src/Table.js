@@ -72,11 +72,11 @@ const history = useHistory();
               <StyledTableCell align='center'>{row.Total_Credit}</StyledTableCell>
               <StyledTableCell align='center'>{row.Opening_Balance}</StyledTableCell>
               <StyledTableCell align='center'>
-                <IconButton color="primary" aria-label="upload picture" component="span" onClick={()=>history.push("/pettycash/edit/" + row.id)}>
+                <IconButton color="primary" aria-label="upload picture" component="span" onClick={()=>history.push("/pettycash/edit/" + row._id)}>
                   <EditIcon />
                 </IconButton></StyledTableCell>
               <StyledTableCell align='center'>
-                <IconButton color="error" aria-label="upload picture" component="span" onClick={() =>deleteTrans(row.id)}>
+                <IconButton color="error" aria-label="upload picture" component="span" onClick={() =>deleteTrans(row._id)}>
                   <DeleteIcon />
                 </IconButton></StyledTableCell>
               

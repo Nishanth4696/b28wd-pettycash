@@ -11,14 +11,14 @@ export function PettyCash() {
   const [trans, setTrans] = useState([])
 
   const getTrans = () =>{
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction`,{method:"GET"})
+    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash`,{method:"GET"})
     .then((data) => data.json())
     .then((trs) => setTrans(trs))
   }
   useEffect(getTrans,[])
 
-  const deleteTrans = (id) =>{
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction/${id}`,{ method:"DELETE" })
+  const deleteTrans = (_id) =>{
+    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash/${_id}`,{ method:"DELETE" })
     .then(() => getTrans());
     
   }

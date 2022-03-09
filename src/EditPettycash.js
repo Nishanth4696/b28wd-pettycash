@@ -27,7 +27,7 @@ export function EditPettycash(){
   const [trans, setTrans] = useState(null);
 
   useEffect(() => {
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction/${id}`,{method:"GET"})
+    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash/${id}`,{method:"GET"})
     .then((data) => data.json())
     .then((mv) => setTrans(mv))
     
@@ -66,7 +66,7 @@ function UpdateTrans({trans}){
     console.log("adding");
    
     console.log(updateTrans);
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction/${trans.id}`,
+    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash/${trans._id}`,
       {
         method:"PUT",
         body:JSON.stringify(updateTrans),

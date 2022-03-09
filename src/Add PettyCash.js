@@ -63,7 +63,7 @@ export function AddPettyCash(){
     console.log("adding");
    
     console.log(newTrans);
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction`,
+    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash`,
       {
         method:"POST",
         body:JSON.stringify(newTrans),

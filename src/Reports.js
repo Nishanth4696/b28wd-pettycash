@@ -12,7 +12,7 @@ export function Reports() {
   const [trans, setTrans] = useState([])
 const history = useHistory();
   const getTrans = () =>{
-    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/transaction`,{method:"GET"})
+    fetch(`https://61b7499a64e4a10017d18a29.mockapi.io/pettycash`,{method:"GET"})
     .then((data) => data.json())
     .then((trs) => setTrans(trs))
   }
