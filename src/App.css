@@ -27,7 +27,14 @@
     align-items: center;
 }
 .printButton{
-  margin-left: 92%;
+  margin-left: 83vw !important;
+  margin-bottom: 30px !important;
+}
+.addbutton{
+  display: block;
+
+ 
+
 }
 
 .datatable{

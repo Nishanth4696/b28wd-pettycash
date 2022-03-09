@@ -24,6 +24,9 @@ const history = useHistory();
       <Button style={{margin:"20px"}} onClick={()=> history.goBack()} variant="contained" startIcon={<ArrowBackIcon />}>
   Back
 </Button>
+<div>
+            <h1 className='head'>PETTY CASH</h1>
+        </div>
        <table className="datatable" border='1'>
          <thead>
            <th>Date</th>

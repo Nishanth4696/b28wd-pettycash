@@ -27,7 +27,11 @@ export function PettyCash() {
   
   const history = useHistory();
   return (
+    
     <section>
+      <div>
+            <h1 className='head'>PETTY CASH</h1>
+        </div>
       <div className='reports'>
       <div className='reports'>
       <Button  style={{margin:"10px", width:"150px"}} variant="contained" onClick={() => history.push("./home")}>Home</Button>

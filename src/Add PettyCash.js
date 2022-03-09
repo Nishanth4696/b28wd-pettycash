@@ -100,8 +100,7 @@ export function AddPettyCash(){
         <div>
             <h1 className='head'>PETTY CASH</h1>
         </div>
-        <div className='button_group'>
-            <div className='button'>
+        <div className='button'>
             
                 <Button 
                     variant="contained" 
@@ -110,15 +109,11 @@ export function AddPettyCash(){
                     onClick={() =>setBox((box ==='none') ? 'block' : 'none')} >
                       {box === 'none'? 'show' : 'hide'} Entry</Button>
             </div>
-            <div>
-            
-            <Button  style={{margin:"10px"}} variant="contained" color='error'>Delete Transaction</Button>
-            <Button  style={{margin:"10px"}} variant="contained" onClick={()=> history.push("./report")}>Report</Button>
-            </div>
-        </div>
+       
    <div className='hide' style={styles} >
         <form className='textbox' onSubmit={formik.handleSubmit}>
-        <Button  style={{margin:"10px"}}  type="submit" variant="contained">Save Transaction</Button>
+       
+        
         
               <TextField
                 name="Trans_Date"
@@ -236,7 +231,14 @@ export function AddPettyCash(){
                   helperText={formik.errors.Total_Credit && formik.touched.Total_Credit && formik.errors.Total_Credit}
               />
                 
-
+                <div className='button_group'>
+            
+            <div>
+                
+                <Button  className='addbutton'  type="submit" variant="contained">Save Transaction</Button>
+                <Button  style={{margin:"10px"}} variant="contained" color='error' onClick={()=> history.push("./report")}>Report</Button>
+                </div>
+            </div>
        
         </form>
         </div>
