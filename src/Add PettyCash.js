@@ -13,13 +13,13 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 const formValidaionSchema= yup.object({
   Trans_Date:yup.date().required(),
   Voucher_No:yup.string().required(),
-  Description:yup.string().min(20).required(),
-  Cost:yup.number().required(),
-  Vat:yup.number(),
-  Total_Debit:yup.number().required(),
-  Opening_Balance:yup.number().required(),
-  Cheque_Received:yup.number().required(),
-  Total_Credit:yup.number().required()
+  Description:yup.string().min(10).required(),
+  Cost:yup.string().required(),
+  Vat:yup.string(),
+  Total_Debit:yup.string().required(),
+  Opening_Balance:yup.string().required(),
+  Cheque_Received:yup.string().required(),
+  Total_Credit:yup.string().required()
 })
 
 export function AddPettyCash(){
@@ -97,9 +97,7 @@ export function AddPettyCash(){
         <section>
 
         
-        <div>
-            <h1 className='head'>PETTY CASH</h1>
-        </div>
+       
         <div className='button'>
             
                 <Button 

@@ -7,19 +7,19 @@ import { useState,useEffect } from 'react';
 import * as yup from 'yup';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import { API_URL } from './global-constants.js';
+import { API_URL } from './global-constants';
 
 
 const formValidaionSchema= yup.object({
   Trans_Date:yup.date().required(),
   Voucher_No:yup.string().required(),
-  Description:yup.string().min(20).required(),
-  Cost:yup.number().required(),
-  Vat:yup.number(),
-  Total_Debit:yup.number().required(),
-  Opening_Balance:yup.number().required(),
-  Cheque_Received:yup.number().required(),
-  Total_Credit:yup.number().required()
+  Description:yup.string().min(10).required(),
+  Cost:yup.string().required(),
+  Vat:yup.string(),
+  Total_Debit:yup.string().required(),
+  Opening_Balance:yup.string().required(),
+  Cheque_Received:yup.string().required(),
+  Total_Credit:yup.string().required()
 })
 
 export function EditPettycash(){
@@ -73,7 +73,7 @@ function UpdateTrans({trans}){
         body:JSON.stringify(updateTrans),
         headers:{'Content-Type':'application/json'},
       })
-      .then(() => history.push('/report'))
+      .then(() => history.push('/pettycash'))
     // setTrans([ ...trans, newTrans]) 
     
    
