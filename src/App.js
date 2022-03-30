@@ -1,10 +1,6 @@
 import './App.css';
 import { useState} from 'react';
 import React from "react";
-import { Redirect } from "react-router-dom";
-// import Main from "./components/Main";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
 import { Welcome } from './Welcome';
 import {NotFound} from './NotFound'
 import { Switch, Route, useHistory } from "react-router-dom";
@@ -84,32 +80,13 @@ export default function App() {
 
             <Route exact path="/printreport">
               <PrintReports/>
-            </Route>
-
-            
-
-            
+            </Route>            
 
             <Route exact path="/home">
                 <Welcome />
             </Route>
 
-          
-            
-
-            <Route path="/login">
-              <Login />
-            </Route>
-
-            <Route path="/signup">
-              <Signup />
-            </Route>
-
-            <Route path="/">
-              <Redirect to="/login" />
-            </Route>
-
-            <Route path="/**">
+           <Route path="/**">
               <NotFound />
             </Route>
           </Switch>      

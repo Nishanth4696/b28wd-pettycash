@@ -42,7 +42,7 @@ export function PettyCash() {
           onClick={() =>history.push('./report')}>Show Data</Button>
       </div>
       <div className='reports'>
-      <Button  style={{margin:"10px", width:"150px"}} variant="contained" onClick={() =>window.location.reload(false)}>Refresh</Button>
+      
       <Button  style={{margin:"10px", width:"150px"}} variant="contained" onClick={() =>history.push('./printreport')}>print Reports</Button>
       </div>
       

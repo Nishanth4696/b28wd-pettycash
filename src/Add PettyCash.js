@@ -23,15 +23,7 @@ const formValidaionSchema= yup.object({
 })
 
 export function AddPettyCash(){
-  // const [Trans_Date] = useState("-");
-  // const [Voucher_No] = useState("-");
-  // const [Description] = useState("-"); 
-  // const [Cost] = useState("-"); 
-  // const [Vat] = useState("-");
-  // const [Total_Debit] = useState("-");
-  // const [Opening_Balance] = useState("-");
-  // const [Cheque_Received] = useState("-");
-  // const [Total_Credit] = useState("-");
+  
 
   
   const formik = useFormik({
@@ -65,12 +57,13 @@ export function AddPettyCash(){
     console.log(newTrans);
     fetch(`${API_URL}/pettycash`,
       {
+        mode:'no-cors',
         method:"POST",
         body:JSON.stringify(newTrans),
         headers:{'Content-Type':'application/json'},
       })
-      .then(() => history.push('./report'))
-    // setTrans([ ...trans, newTrans]) 
+      .then(() => history.push('./pettycash'))
+   
     
    
   }
@@ -164,7 +157,7 @@ export function AddPettyCash(){
               <div className='clicktax'>
                 <TextField                
                   name="Vat"
-                  value={formik.values.Cost *5/100}
+                  value={formik.values.Vat}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   id="outlined-Vat"

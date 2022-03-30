@@ -55,7 +55,7 @@ const history = useHistory();
             <StyledTableCell align='center' >Credit</StyledTableCell>
             <StyledTableCell align='center' >Balance</StyledTableCell>
             <StyledTableCell align='center' ></StyledTableCell>
-            <StyledTableCell align='center' ></StyledTableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody >
@@ -74,12 +74,11 @@ const history = useHistory();
               <StyledTableCell align='center'>
                 <IconButton color="primary" aria-label="upload picture" component="span" onClick={()=>history.push("/pettycash/edit/" + row._id)}>
                   <EditIcon />
-                </IconButton></StyledTableCell>
-              <StyledTableCell align='center'>
+                </IconButton>
                 <IconButton color="error" aria-label="upload picture" component="span" onClick={() =>deleteTrans(row._id)}>
                   <DeleteIcon />
-                </IconButton></StyledTableCell>
-              
+                </IconButton>
+                </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
