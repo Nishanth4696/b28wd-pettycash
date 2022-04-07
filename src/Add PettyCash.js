@@ -57,7 +57,6 @@ export function AddPettyCash(){
     console.log(newTrans);
     fetch(`${API_URL}/pettycash`,
       {
-        mode:'no-cors',
         method:"POST",
         body:JSON.stringify(newTrans),
         headers:{'Content-Type':'application/json'},

@@ -20,15 +20,27 @@ export function LoginApp() {
   const [isSubmitted, setIsSubmitted] = useState(false);
  
 
+  const UserDemo=() => {
+    setEmail("Testuser1@gmail.com")
+    setPass("testuser1")
+    history.push('./home')
+  }
+
+  const AdminDemo=() => {
+    setEmail("Admin@gmail.com")
+    setPass("admin")
+    history.push('./home')
+  }
+
   // User Login info  
   const database = [
     {
-      email: "testuser1@gmail.com",
+      email: "Testuser1@gmail.com",
       password: "testuser1"
     },
     {
-      email: "testuser2@gmail.com",
-      password: "testuser2"
+      email: "Admin@gmail.com",
+      password: "admin"
     },
    
   ];
@@ -115,9 +127,13 @@ const styles = {display: box, fontWeight:'bold'};
 							Sign In
 						</Button>
 
+           
+
+            
+
             
 					</form>
-					<Button variant="contained" style={{marginLeft:'auto'}} type='button'  onClick={() =>setBox((box ==='none') ? 'block' : 'none')} >Demouser<NavigateNextIcon/> </Button>
+					<Button variant="contained" style={{marginLeft:'auto'}} type='button'  onClick={() =>setBox((box ==='none') ? 'block' : 'none')} >DemoLogin<NavigateNextIcon/> </Button>
         </div>
         <div className="login_right" style={styles}>
               <h3 styles={{marginLeft:'10px'}}>Demo Credientials</h3> 
@@ -125,8 +141,17 @@ const styles = {display: box, fontWeight:'bold'};
               
               <h2>User Login</h2>
               <div >
-                <h3 style={{color:'red'}}>email:</h3><p style={{fontSize:'24px'}}>testuser1@gmail.com </p>
-                <h3 style={{color:'red'}}>pass:</h3><p style={{fontSize:'24px'}}>testuser1 </p>
+              <Button   variant="contained" type='submit' onClick={UserDemo} >
+							User
+						</Button>
+              </div>
+             
+              
+              <h2>Admin Login</h2>
+              <div >
+              <Button   variant="contained" type='submit' onClick={AdminDemo} >
+							Admin
+						</Button>
               </div>
              
               </div>
